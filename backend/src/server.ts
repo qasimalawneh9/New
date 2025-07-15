@@ -5,19 +5,30 @@ const PORT = process.env.PORT || 8000;
 
 async function startServer() {
   try {
-    // Test database connection
+    // Try to test database connection, but don't fail if it's not available
     const dbConnected = await testConnection();
 
-    if (!dbConnected) {
-      console.error("❌ Failed to connect to database. Server will not start.");
-      process.exit(1);
+    if (dbConnected) {
+      console.log("✅ Database connected successfully");
+    } else {
+      console.log(
+        "⚠️  Database not available - running in development mode without database",
+      );
     }
 
-    // Start server
+    // Start server regardless of database connection
     const server = app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
       console.log(`📱 Environment: ${process.env.NODE_ENV || "development"}`);
       console.log(`🔗 API Base URL: http://localhost:${PORT}/api`);
+      console.log("📋 Available endpoints:");
+      console.log("  - POST /api/auth/login");
+      console.log("  - POST /api/auth/register");
+      console.log("  - POST /api/auth/logout");
+      console.log("  - GET  /api/users/me");
+      console.log("  - GET  /api/teachers");
+      console.log("  - POST /api/bookings");
+      console.log("  - GET  /api/wallets/me");
     });
 
     // Graceful shutdown
