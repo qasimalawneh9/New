@@ -1,22 +1,13 @@
 import app from "./app";
-import { testConnection } from "./config/database";
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3001;
 
 async function startServer() {
   try {
-    // Try to test database connection, but don't fail if it's not available
-    const dbConnected = await testConnection();
+    // Skip database connection for development
+    console.log("⚡ Starting in development mode without database");
 
-    if (dbConnected) {
-      console.log("✅ Database connected successfully");
-    } else {
-      console.log(
-        "⚠️  Database not available - running in development mode without database",
-      );
-    }
-
-    // Start server regardless of database connection
+    // Start server immediately
     const server = app.listen(PORT, () => {
       console.log(`🚀 Server is running on port ${PORT}`);
       console.log(`📱 Environment: ${process.env.NODE_ENV || "development"}`);
