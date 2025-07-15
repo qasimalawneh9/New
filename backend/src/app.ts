@@ -13,8 +13,14 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:8080", "http://localhost:3000"],
+    origin: [
+      "http://localhost:8080",
+      "http://localhost:3000",
+      "http://localhost:8001",
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization", "Accept"],
   }),
 );
 app.use(express.json());
@@ -31,14 +37,22 @@ app.get("/", (req, res) => {
   res.json({
     message: "TalkCon Backend API",
     version: "1.0.0",
+    status: "running",
     endpoints: [
-      "/api/auth",
-      "/api/users",
-      "/api/teachers",
-      "/api/bookings",
-      "/api/wallets",
+      "POST /api/auth/login",
+      "POST /api/auth/register",
+      "POST /api/auth/logout",
+      "GET  /api/users/me",
+      "GET  /api/teachers",
+      "POST /api/bookings",
+      "GET  /api/wallets/me",
     ],
   });
+});
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.json({ status: "healthy", timestamp: new Date().toISOString() });
 });
 
 // Error handling middleware
