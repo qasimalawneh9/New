@@ -20,6 +20,25 @@ export interface ApiResponse<T = any> {
   success?: boolean;
 }
 
+// Paginated response for list endpoints
+export interface PaginatedResponse<T = any> {
+  data: T[];
+  meta: {
+    currentPage: number;
+    lastPage: number;
+    perPage: number;
+    total: number;
+    from: number;
+    to: number;
+  };
+}
+
+// Validation error response
+export interface ValidationErrorResponse {
+  message: string;
+  errors: Record<string, string[]>;
+}
+
 // Authentication response - matches our backend auth controller
 export interface AuthResponse {
   token: string;
@@ -30,6 +49,7 @@ export interface AuthResponse {
 export interface User {
   id: string;
   email: string;
+  name?: string;
   role: "student" | "teacher" | "admin";
   status:
     | "active"
@@ -37,6 +57,13 @@ export interface User {
     | "banned"
     | "pending_verification"
     | "deleted";
+  profileImage?: string;
+  phone?: string;
+  timezone?: string;
+  emailVerified?: boolean;
+  twoFactorEnabled?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 // HTTP methods
@@ -118,3 +145,61 @@ export const buildQueryString = (params: Record<string, any>): string => {
   const queryString = searchParams.toString();
   return queryString ? `?${queryString}` : "";
 };
+
+// Platform configuration constants
+export const PLATFORM_CONFIG = {
+  // Business rules
+  COMMISSION_RATE: 0.2, // 20% platform commission
+  VAT_RATE: 0.1, // 10% VAT
+  RESCHEDULE_WINDOW_HOURS: 72, // 72-hour rescheduling window
+  CANCELLATION_WINDOW_HOURS: 48, // 48-hour cancellation policy
+  MAX_RESCHEDULES_PER_BOOKING: 1, // Maximum 1 reschedule per booking
+  AUTO_COMPLETION_HOURS: 48, // Auto-complete after 48 hours
+
+  // Payment thresholds
+  MIN_PAYPAL_WITHDRAWAL: 10, // $10 minimum PayPal withdrawal
+  MIN_BANK_WITHDRAWAL: 100, // $100 minimum bank transfer withdrawal
+
+  // Teacher suspension rules
+  MAX_ABSENCES_BEFORE_SUSPENSION: 3, // Suspend after 3 absences
+
+  // Meeting platforms
+  SUPPORTED_MEETING_PLATFORMS: [
+    "zoom",
+    "teams",
+    "meet",
+    "skype",
+    "whatsapp",
+  ] as const,
+
+  // Payment providers
+  SUPPORTED_PAYMENT_PROVIDERS: [
+    "paypal",
+    "stripe",
+    "apple_pay",
+    "google_pay",
+    "wechat_pay",
+  ] as const,
+
+  // Lesson durations (in minutes)
+  LESSON_DURATIONS: [15, 30, 45, 60, 90, 120],
+
+  // Review system
+  MAX_RATING: 5,
+  MIN_RATING: 1,
+
+  // SLA times (in hours)
+  SUPPORT_SLA: {
+    low: 72,
+    medium: 24,
+    high: 8,
+    urgent: 2,
+  },
+} as const;
+
+// Type exports for platform config
+export type MeetingPlatform =
+  (typeof PLATFORM_CONFIG.SUPPORTED_MEETING_PLATFORMS)[number];
+export type PaymentProvider =
+  (typeof PLATFORM_CONFIG.SUPPORTED_PAYMENT_PROVIDERS)[number];
+export type SupportPriority = keyof typeof PLATFORM_CONFIG.SUPPORT_SLA;
