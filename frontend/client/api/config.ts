@@ -1,8 +1,8 @@
 /**
- * API Configuration for Laravel Backend Integration
+ * API Configuration for Node.js/Express Backend Integration
  *
  * This file contains all API configuration and base utilities
- * for communicating with the Laravel backend.
+ * for communicating with the Node.js/Express backend.
  */
 
 // Environment configuration
@@ -12,58 +12,34 @@ export const API_CONFIG = {
   HEADERS: {
     "Content-Type": "application/json",
     Accept: "application/json",
-    "X-Requested-With": "XMLHttpRequest",
   },
 };
 
-// API Response wrapper - matches Laravel API Resource format
+// API Response wrapper - matches our Node.js backend format
 export interface ApiResponse<T = any> {
-  data: T;
+  data?: T;
   message?: string;
-  status: number;
-  success: boolean;
+  status?: number;
+  success?: boolean;
 }
 
-// Laravel pagination response
-export interface PaginatedResponse<T = any> {
-  data: T[];
-  current_page: number;
-  first_page_url: string;
-  from: number;
-  last_page: number;
-  last_page_url: string;
-  next_page_url: string | null;
-  path: string;
-  per_page: number;
-  prev_page_url: string | null;
-  to: number;
-  total: number;
-}
-
-// Laravel validation error response
-export interface ValidationErrorResponse {
-  message: string;
-  errors: Record<string, string[]>;
-}
-
-// Authentication response
+// Authentication response - matches our backend auth controller
 export interface AuthResponse {
-  access_token: string;
-  token_type: string;
-  expires_in: number;
+  token: string;
   user: User;
 }
 
-// Base User model (matches Laravel User model)
+// Base User model - matches our backend user model
 export interface User {
   id: string;
-  name: string;
   email: string;
-  email_verified_at?: string;
-  user_type: "student" | "teacher" | "admin";
-  avatar?: string;
-  created_at: string;
-  updated_at: string;
+  role: "student" | "teacher" | "admin";
+  status:
+    | "active"
+    | "suspended"
+    | "banned"
+    | "pending_verification"
+    | "deleted";
 }
 
 // HTTP methods
@@ -118,14 +94,6 @@ export const buildHeaders = (
   const token = getAuthToken();
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
-  }
-
-  // Add CSRF token if available (for Laravel CSRF protection)
-  const csrfToken = document
-    .querySelector('meta[name="csrf-token"]')
-    ?.getAttribute("content");
-  if (csrfToken) {
-    headers["X-CSRF-TOKEN"] = csrfToken;
   }
 
   return { ...headers, ...customHeaders };
