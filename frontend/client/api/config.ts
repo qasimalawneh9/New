@@ -1,13 +1,10 @@
 /**
  * API Configuration for Node.js/Express Backend Integration
- *
- * This file contains all API configuration and base utilities
- * for communicating with the Node.js/Express backend.
  */
 
 // Environment configuration
 export const API_CONFIG = {
-  BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3001/api",
+  BASE_URL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3002/api",
   TIMEOUT: 10000,
   HEADERS: {
     "Content-Type": "application/json",
