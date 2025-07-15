@@ -5,153 +5,206 @@ import {
   ReactNode,
   useEffect,
 } from "react";
-import { db } from "../lib/database";
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  type: "student" | "teacher" | "admin";
-  avatar?: string;
-}
+import {
+  authService,
+  LoginCredentials,
+  RegisterData,
+} from "../api/services/auth.service";
+import { User } from "../api/config";
+import { setAuthToken, removeAuthToken, getAuthToken } from "../api/config";
+import { LoginForm, RegisterForm } from "../types/platform";
 
 interface AuthContextType {
   user: User | null;
-  login: (email: string, password: string) => Promise<boolean>;
-  signup: (userData: any) => Promise<boolean | string>;
-  logout: () => void;
+  login: (credentials: LoginForm) => Promise<boolean>;
+  register: (userData: RegisterForm) => Promise<boolean>;
+  logout: () => Promise<void>;
+  switchRole: (newRole: "student" | "teacher" | "admin") => Promise<boolean>;
+  refreshUser: () => Promise<void>;
   isLoading: boolean;
+  error: string | null;
+  clearError: () => void;
+  isAuthenticated: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Admin credentials
-const ADMIN_EMAIL = "admin@talkcon.com";
-const ADMIN_PASSWORD = "admin123";
-
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Initialize auth state from stored token
   useEffect(() => {
-    // Auto-login demo user for testing purposes
-    const demoUser: User = {
-      id: "demo-student",
-      name: "Demo Student",
-      email: "demo@student.com",
-      type: "student",
-      avatar: "/placeholder.svg",
+    const initializeAuth = async () => {
+      const token = getAuthToken();
+      if (token) {
+        try {
+          setIsLoading(true);
+          await refreshUser();
+        } catch (err) {
+          // Token is invalid, remove it
+          removeAuthToken();
+          setUser(null);
+          setIsAuthenticated(false);
+        } finally {
+          setIsLoading(false);
+        }
+      }
     };
-    setUser(demoUser);
-    localStorage.setItem("talkcon_user", JSON.stringify(demoUser));
+
+    initializeAuth();
   }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (credentials: LoginForm): Promise<boolean> => {
     setIsLoading(true);
+    setError(null);
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const loginData: LoginCredentials = {
+        email: credentials.email,
+        password: credentials.password,
+      };
 
-      // Check admin credentials
-      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-        const adminUser: User = {
-          id: "admin",
-          name: "Administrator",
-          email: ADMIN_EMAIL,
-          type: "admin",
-          avatar: "/placeholder.svg",
-        };
-        setUser(adminUser);
-        localStorage.setItem("talkcon_user", JSON.stringify(adminUser));
+      const response = await authService.login(loginData);
+
+      if (response.token && response.user) {
+        // Store the token
+        setAuthToken(response.token, credentials.rememberMe);
+
+        // Set user data
+        setUser(response.user);
+        setIsAuthenticated(true);
+
         return true;
       }
 
-      // Check regular users
-      const authenticatedUser = db.authenticateUser(email, password);
-      if (authenticatedUser) {
-        const user: User = {
-          id: authenticatedUser.id,
-          name: authenticatedUser.name,
-          email: authenticatedUser.email,
-          type: authenticatedUser.type,
-          avatar: authenticatedUser.avatar,
-        };
-        setUser(user);
-        localStorage.setItem("talkcon_user", JSON.stringify(user));
-        return true;
-      }
-
+      return false;
+    } catch (err: any) {
+      const errorMessage =
+        err?.message || "Login failed. Please check your credentials.";
+      setError(errorMessage);
       return false;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const signup = async (userData: any): Promise<boolean | string> => {
+  const register = async (userData: RegisterForm): Promise<boolean> => {
     setIsLoading(true);
+    setError(null);
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const registerData: RegisterData = {
+        email: userData.email,
+        password: userData.password,
+        role: userData.role,
+      };
 
-      if (userData.userType === "teacher") {
-        // Create basic teacher account first (pending status)
-        const teacherUser = {
-          name: `${userData.firstName} ${userData.lastName}`,
-          avatar: "/placeholder.svg",
+      const response = await authService.register(registerData);
+
+      if (response.user) {
+        // For successful registration, auto-login the user
+        const loginSuccess = await login({
           email: userData.email,
           password: userData.password,
-          type: "teacher" as const,
-        };
-
-        const newUser = db.createBasicTeacher(teacherUser);
-
-        const user: User = {
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-          type: "teacher",
-          avatar: newUser.avatar,
-        };
-
-        setUser(user);
-        localStorage.setItem("talkcon_user", JSON.stringify(user));
-        return true;
-      } else {
-        // Create student
-        const newUser = db.createUser({
-          name: `${userData.firstName} ${userData.lastName}`,
-          avatar: "/placeholder.svg",
-          email: userData.email,
-          learningLanguages: userData.learningLanguages || ["English"],
-          nativeLanguage: userData.nativeLanguage || "English",
-          level: {},
-          joinedDate: new Date().toISOString(),
-          password: userData.password,
+          rememberMe: false,
         });
 
-        const user: User = {
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-          type: "student",
-          avatar: newUser.avatar,
-        };
-        setUser(user);
-        localStorage.setItem("talkcon_user", JSON.stringify(user));
-        return true;
+        return loginSuccess;
       }
-    } catch (error: any) {
-      return error.message || "Failed to create account";
+
+      return false;
+    } catch (err: any) {
+      const errorMessage =
+        err?.message || "Registration failed. Please try again.";
+      setError(errorMessage);
+      return false;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const logout = () => {
-    setUser(null);
-    localStorage.removeItem("talkcon_user");
+  const logout = async (): Promise<void> => {
+    setIsLoading(true);
+
+    try {
+      // Call backend logout endpoint
+      await authService.logout();
+    } catch (err) {
+      // Even if logout fails on backend, clear local state
+      console.warn("Logout request failed:", err);
+    } finally {
+      // Clear local auth state
+      removeAuthToken();
+      setUser(null);
+      setIsAuthenticated(false);
+      setError(null);
+      setIsLoading(false);
+    }
+  };
+
+  const switchRole = async (
+    newRole: "student" | "teacher" | "admin",
+  ): Promise<boolean> => {
+    if (!user) return false;
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      // For now, just update the local user state
+      // In a real implementation, this would call a backend endpoint
+      const updatedUser = { ...user, role: newRole };
+      setUser(updatedUser);
+      return true;
+    } catch (err: any) {
+      const errorMessage = err?.message || "Failed to switch role";
+      setError(errorMessage);
+      return false;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const refreshUser = async (): Promise<void> => {
+    if (!getAuthToken()) return;
+
+    try {
+      const response = await authService.getProfile();
+      if (response.user) {
+        setUser(response.user);
+        setIsAuthenticated(true);
+      }
+    } catch (err) {
+      // If profile fetch fails, user is likely not authenticated
+      removeAuthToken();
+      setUser(null);
+      setIsAuthenticated(false);
+      throw err;
+    }
+  };
+
+  const clearError = () => {
+    setError(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout, isLoading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        login,
+        register,
+        logout,
+        switchRole,
+        refreshUser,
+        isLoading,
+        error,
+        clearError,
+        isAuthenticated,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
