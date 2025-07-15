@@ -4,6 +4,7 @@
   "description": "TalkCon project",
   "main": "index.js",
   "scripts": {
+    "extract": "node extract.js",
     "start": "node server.js",
     "dev": "npm start",
     "build": "echo 'Build script placeholder'"
@@ -12,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "adm-zip": "^0.5.16"
-  }
+    "adm-zip": "^0.5.10"
+  },
+  "devDependencies": {}
 }
