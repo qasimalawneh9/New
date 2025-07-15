@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- Homepage - Highest Priority -->
+  <url>
+    <loc>https://talkcon.com/</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://talkcon.com/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://talkcon.com/es/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://talkcon.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://talkcon.com/de/" />
+  </url>
+
+  <!-- Teachers Directory - High Priority for "online language tutor" keyword -->
+  <url>
+    <loc>https://talkcon.com/teachers</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Native Speaker Teachers - Competitive advantage -->
+  <url>
+    <loc>https://talkcon.com/teachers?filter=native-speaker</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Conversation Practice - High-value keyword -->
+  <url>
+    <loc>https://talkcon.com/conversation-practice</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Trial Lessons Landing Page -->
+  <url>
+    <loc>https://talkcon.com/trial-lessons</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- High-volume competitive keyword pages -->
+  <url>
+    <loc>https://talkcon.com/online-spanish-tutor</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/english-conversation-teacher</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/personalized-language-lessons</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Language-specific teacher pages with competitive keywords -->
+  <url>
+    <loc>https://talkcon.com/teachers?language=english</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=spanish</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=french</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=german</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=chinese</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=japanese</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=korean</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=italian</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=portuguese</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=arabic</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=russian</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers?language=dutch</loc>
+    <lastmod>2024-01-15T08:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Core Pages - High Priority -->
+  <url>
+    <loc>https://talkcon.com/how-it-works</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teach</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/pricing</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/languages</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Community & Support Pages -->
+  <url>
+    <loc>https://talkcon.com/community</loc>
+    <lastmod>2024-01-15T06:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/help</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/contact</loc>
+    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://talkcon.com/privacy</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/terms</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Individual Teacher Profile Examples (These would be dynamically generated) -->
+  <url>
+    <loc>https://talkcon.com/teachers/sarah-english-tutor</loc>
+    <lastmod>2024-01-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers/maria-spanish-tutor</loc>
+    <lastmod>2024-01-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers/pierre-french-tutor</loc>
+    <lastmod>2024-01-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers/hans-german-tutor</loc>
+    <lastmod>2024-01-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://talkcon.com/teachers/li-chinese-tutor</loc>
+    <lastmod>2024-01-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
