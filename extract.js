@@ -1,15 +1,18 @@
+const AdmZip = require("adm-zip");
 const fs = require("fs");
-const path = require("path");
 
-// Simple zip extraction using built-in modules
 try {
-  const zipPath = "./talkcon-full-project.zip";
-  if (fs.existsSync(zipPath)) {
-    console.log(
-      "Zip file exists, but Node.js does not have built-in zip extraction.",
-    );
-    console.log("We need to install a package or use a different approach.");
-  }
+  const zip = new AdmZip("./talkcon-full-project.zip");
+  console.log("Extracting zip file...");
+  zip.extractAllTo("./", true);
+  console.log("Extraction completed!");
+
+  // List extracted files
+  console.log("Extracted files:");
+  const entries = zip.getEntries();
+  entries.forEach((entry) => {
+    console.log(" -", entry.entryName);
+  });
 } catch (error) {
-  console.error("Error:", error);
+  console.error("Error extracting zip:", error);
 }
