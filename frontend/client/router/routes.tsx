@@ -24,7 +24,7 @@ import TeacherSettings from "../pages/TeacherSettings";
 import TeacherResources from "../pages/TeacherResources";
 import TeacherSupport from "../pages/TeacherSupport";
 import Settings from "../pages/Settings";
-import AdminSimpleFixed from "../pages/AdminSimpleFixed";
+import AdminDashboard from "../pages/AdminDashboard";
 import Support from "../pages/Support";
 import ForgotPassword from "../pages/ForgotPassword";
 import DashboardLessons from "../pages/DashboardLessons";
