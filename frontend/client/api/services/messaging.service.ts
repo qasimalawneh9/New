@@ -41,7 +41,7 @@ export interface OnlineStatus {
   lastSeen: string;
 }
 
-class MessagingService {
+class MessagingService extends BaseApiService {
   // Conversation Management
   async getConversations(
     page = 1,
