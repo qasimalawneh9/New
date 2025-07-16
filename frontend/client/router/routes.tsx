@@ -41,7 +41,7 @@ export interface RouteConfig {
 
 export const routes: RouteConfig[] = [
   { path: "/", component: Index },
-  { path: "/teachers", component: Teachers },
+  { path: "/teachers", component: TeachersAdvanced },
   { path: "/teachers/:id", component: TeacherProfile },
   { path: "/dashboard", component: Dashboard },
   { path: "/login", component: Login },
