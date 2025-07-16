@@ -44,7 +44,7 @@ export const routes: RouteConfig[] = [
   { path: "/teachers", component: TeachersAdvanced },
   { path: "/teachers/:id", component: TeacherProfile },
   { path: "/dashboard", component: Dashboard },
-  { path: "/login", component: Login },
+  { path: "/login", component: LoginFixed },
   { path: "/signup", component: Signup },
   { path: "/messages", component: Messages },
   { path: "/lesson/:id", component: LessonRoom },
