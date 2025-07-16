@@ -470,7 +470,7 @@ export default function TeachersAdvanced() {
             )}
 
             {/* Search and Filters */}
-            <AdvancedSearch
+            <AdvancedSearchBackend
               filters={filters}
               onFiltersChange={handleFiltersChange}
               onSearch={handleSearch}
