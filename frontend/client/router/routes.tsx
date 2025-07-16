@@ -80,6 +80,7 @@ export const routes: RouteConfig[] = [
   { path: "/admin/teachers", component: AdminTeachers },
   { path: "/admin/payouts", component: AdminPayouts },
   { path: "/admin/support", component: AdminSupport },
+  { path: "/analytics", component: AnalyticsDashboard },
   { path: "/support", component: Support },
   { path: "/forgot-password", component: ForgotPassword },
   { path: "/dashboard/lessons", component: DashboardLessons },
