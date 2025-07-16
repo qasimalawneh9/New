@@ -1,3 +1,4 @@
+import React from "react";
 import "./global.css";
 import { createRoot } from "react-dom/client";
 import { AppProviders } from "./providers/AppProviders";
@@ -25,7 +26,9 @@ console.warn = (...args) => {
 
 const App = () => {
   // Initialize performance tracking
-  trackPerformance();
+  React.useEffect(() => {
+    trackPerformance();
+  }, []);
 
   return (
     <AppProviders>
@@ -35,4 +38,9 @@ const App = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
+
+createRoot(rootElement).render(<App />);
