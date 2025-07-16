@@ -96,8 +96,10 @@ export default function LoginFixed() {
 
         const returnTo = location.state?.returnTo || redirectUrl;
 
-        // Force reload the page to ensure proper navigation
-        window.location.href = returnTo;
+        // Add a small delay to ensure state is updated
+        setTimeout(() => {
+          navigate(returnTo, { replace: true });
+        }, 100);
       } else {
         setError("Invalid email or password");
       }
