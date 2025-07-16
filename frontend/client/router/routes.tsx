@@ -30,6 +30,7 @@ import AdminUsers from "../pages/admin/AdminUsers";
 import AdminTeachers from "../pages/admin/AdminTeachers";
 import AdminPayouts from "../pages/admin/AdminPayouts";
 import AdminSupport from "../pages/admin/AdminSupport";
+import AnalyticsDashboard from "../pages/AnalyticsDashboard";
 import Support from "../pages/Support";
 import ForgotPassword from "../pages/ForgotPassword";
 import DashboardLessons from "../pages/DashboardLessons";
