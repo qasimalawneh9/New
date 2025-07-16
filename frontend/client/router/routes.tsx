@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import TeachersAdvanced from "../pages/TeachersAdvanced";
 import TeacherProfile from "../pages/TeacherProfile";
 import Messages from "../pages/Messages";
+import MessagingSystem from "../pages/MessagingSystem";
 import LessonRoom from "../pages/LessonRoom";
 import BookingConfirmation from "../pages/BookingConfirmation";
 import HowItWorks from "../pages/HowItWorks";
