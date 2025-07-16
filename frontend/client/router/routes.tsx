@@ -3,7 +3,7 @@ import Index from "../pages/Index";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
-import Teachers from "../pages/Teachers";
+import TeachersAdvanced from "../pages/TeachersAdvanced";
 import TeacherProfile from "../pages/TeacherProfile";
 import Messages from "../pages/Messages";
 import LessonRoom from "../pages/LessonRoom";
