@@ -68,7 +68,7 @@ export const routes: RouteConfig[] = [
   { path: "/teacher-resources", component: TeacherResources },
   { path: "/teacher-support", component: TeacherSupport },
   { path: "/settings", component: Settings },
-  { path: "/admin", component: AdminSimpleFixed },
+  { path: "/admin", component: AdminDashboard },
   { path: "/support", component: Support },
   { path: "/forgot-password", component: ForgotPassword },
   { path: "/dashboard/lessons", component: DashboardLessons },
