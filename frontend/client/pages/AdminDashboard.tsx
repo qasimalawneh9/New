@@ -531,19 +531,35 @@ export default function AdminDashboard() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Button variant="outline" className="h-20 flex-col">
+            <Button
+              variant="outline"
+              className="h-20 flex-col"
+              onClick={() => (window.location.href = "/admin/users")}
+            >
               <UserPlus className="h-6 w-6 mb-2" />
               Manage Users
             </Button>
-            <Button variant="outline" className="h-20 flex-col">
+            <Button
+              variant="outline"
+              className="h-20 flex-col"
+              onClick={() => (window.location.href = "/admin/teachers")}
+            >
               <UserCheck className="h-6 w-6 mb-2" />
               Review Teachers
             </Button>
-            <Button variant="outline" className="h-20 flex-col">
+            <Button
+              variant="outline"
+              className="h-20 flex-col"
+              onClick={() => (window.location.href = "/admin/payouts")}
+            >
               <CreditCard className="h-6 w-6 mb-2" />
               Process Payouts
             </Button>
-            <Button variant="outline" className="h-20 flex-col">
+            <Button
+              variant="outline"
+              className="h-20 flex-col"
+              onClick={() => (window.location.href = "/admin/support")}
+            >
               <FileText className="h-6 w-6 mb-2" />
               Support Tickets
             </Button>
