@@ -1,0 +1,19 @@
+{
+  "name": "talkcon-project",
+  "version": "1.0.0",
+  "description": "TalkCon project",
+  "main": "index.js",
+  "scripts": {
+    "extract": "node extract.js",
+    "start": "node server.js",
+    "dev": "npm start",
+    "build": "echo 'Build script placeholder'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "adm-zip": "^0.5.10"
+  },
+  "devDependencies": {}
+}
