@@ -39,9 +39,9 @@ import {
   LessonFilters,
 } from "@/types/api";
 
-// Base API configuration - Fixed for browser compatibility
+// Base API configuration
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+  process.env.REACT_APP_API_URL || "http://localhost:8000/api";
 
 class ApiClient {
   private baseUrl: string;
