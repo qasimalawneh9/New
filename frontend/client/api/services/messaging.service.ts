@@ -1,4 +1,4 @@
-import { apiClient } from "../client";
+import { BaseApiService } from "../base.service";
 import { Message, Conversation, Attachment, User } from "../../types/platform";
 
 export interface SendMessageRequest {
