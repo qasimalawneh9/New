@@ -55,7 +55,7 @@ class MessagingService extends BaseApiService {
         ...(search && { search }),
       });
 
-      const response = await apiClient.get(`/conversations?${params}`);
+      const response = await this.get(`/conversations?${params}`);
       return response.data;
     } catch (error) {
       console.error("Failed to fetch conversations:", error);
@@ -66,7 +66,7 @@ class MessagingService extends BaseApiService {
 
   async getConversation(conversationId: number): Promise<Conversation> {
     try {
-      const response = await apiClient.get(`/conversations/${conversationId}`);
+      const response = await this.get(`/conversations/${conversationId}`);
       return response.data;
     } catch (error) {
       console.error("Failed to fetch conversation:", error);
@@ -78,7 +78,7 @@ class MessagingService extends BaseApiService {
     data: CreateConversationRequest,
   ): Promise<Conversation> {
     try {
-      const response = await apiClient.post("/conversations", data);
+      const response = await this.post("/conversations", data);
       return response.data;
     } catch (error) {
       console.error("Failed to create conversation:", error);
@@ -88,7 +88,7 @@ class MessagingService extends BaseApiService {
 
   async deleteConversation(conversationId: number): Promise<void> {
     try {
-      await apiClient.delete(`/conversations/${conversationId}`);
+      await this.delete(`/conversations/${conversationId}`);
     } catch (error) {
       console.error("Failed to delete conversation:", error);
       throw error;
@@ -107,7 +107,7 @@ class MessagingService extends BaseApiService {
         limit: limit.toString(),
       });
 
-      const response = await apiClient.get(
+      const response = await this.get(
         `/conversations/${conversationId}/messages?${params}`,
       );
       return response.data;
@@ -131,7 +131,7 @@ class MessagingService extends BaseApiService {
         });
       }
 
-      const response = await apiClient.post("/messages", formData, {
+      const response = await this.post("/messages", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -145,9 +145,7 @@ class MessagingService extends BaseApiService {
 
   async editMessage(messageId: number, content: string): Promise<Message> {
     try {
-      const response = await apiClient.put(`/messages/${messageId}`, {
-        content,
-      });
+      const response = await this.put(`/messages/${messageId}`, { content });
       return response.data;
     } catch (error) {
       console.error("Failed to edit message:", error);
@@ -157,7 +155,7 @@ class MessagingService extends BaseApiService {
 
   async deleteMessage(messageId: number): Promise<void> {
     try {
-      await apiClient.delete(`/messages/${messageId}`);
+      await this.delete(`/messages/${messageId}`);
     } catch (error) {
       console.error("Failed to delete message:", error);
       throw error;
@@ -166,7 +164,7 @@ class MessagingService extends BaseApiService {
 
   async markAsRead(conversationId: number): Promise<void> {
     try {
-      await apiClient.post(`/conversations/${conversationId}/read`);
+      await this.post(`/conversations/${conversationId}/read`);
     } catch (error) {
       console.error("Failed to mark conversation as read:", error);
     }
@@ -182,7 +180,7 @@ class MessagingService extends BaseApiService {
         ...(conversationId && { conversationId: conversationId.toString() }),
       });
 
-      const response = await apiClient.get(`/messages/search?${params}`);
+      const response = await this.get(`/messages/search?${params}`);
       return response.data;
     } catch (error) {
       console.error("Failed to search messages:", error);
