@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Navbar } from "@/components/ui/navbar";
 import { EnhancedTeacherCard } from "@/components/ui/enhanced-teacher-card";
-import { AdvancedSearch } from "@/components/search/AdvancedSearch";
+import { AdvancedSearchBackend } from "@/components/search/AdvancedSearchBackend";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CompetitiveSEOHead } from "@/components/seo/CompetitiveSEOHead";
