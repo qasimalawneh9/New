@@ -24,7 +24,7 @@ import TeacherSettings from "../pages/TeacherSettings";
 import TeacherResources from "../pages/TeacherResources";
 import TeacherSupport from "../pages/TeacherSupport";
 import Settings from "../pages/Settings";
-import Admin from "../pages/Admin";
+import AdminSimple from "../pages/AdminSimple";
 import ForgotPassword from "../pages/ForgotPassword";
 import DashboardLessons from "../pages/DashboardLessons";
 import TeacherApplicationStatus from "../pages/TeacherApplicationStatus";
@@ -67,7 +67,7 @@ export const routes: RouteConfig[] = [
   { path: "/teacher-resources", component: TeacherResources },
   { path: "/teacher-support", component: TeacherSupport },
   { path: "/settings", component: Settings },
-  { path: "/admin", component: Admin },
+  { path: "/admin", component: AdminSimple },
   { path: "/forgot-password", component: ForgotPassword },
   { path: "/dashboard/lessons", component: DashboardLessons },
   { path: "/teacher-application-status", component: TeacherApplicationStatus },
