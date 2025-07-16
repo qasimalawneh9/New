@@ -197,7 +197,7 @@ class MessagingService extends BaseApiService {
         formData.append("messageId", messageId.toString());
       }
 
-      const response = await apiClient.post("/attachments", formData, {
+      const response = await this.post("/attachments", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -211,7 +211,7 @@ class MessagingService extends BaseApiService {
 
   async getAttachment(attachmentId: number): Promise<Blob> {
     try {
-      const response = await apiClient.get(`/attachments/${attachmentId}`, {
+      const response = await this.get(`/attachments/${attachmentId}`, {
         responseType: "blob",
       });
       return response.data;
@@ -223,7 +223,7 @@ class MessagingService extends BaseApiService {
 
   async deleteAttachment(attachmentId: number): Promise<void> {
     try {
-      await apiClient.delete(`/attachments/${attachmentId}`);
+      await this.delete(`/attachments/${attachmentId}`);
     } catch (error) {
       console.error("Failed to delete attachment:", error);
       throw error;
@@ -233,7 +233,7 @@ class MessagingService extends BaseApiService {
   // User Status and Presence
   async getOnlineUsers(): Promise<OnlineStatus[]> {
     try {
-      const response = await apiClient.get("/users/online");
+      const response = await this.get("/users/online");
       return response.data;
     } catch (error) {
       console.error("Failed to fetch online users:", error);
@@ -243,7 +243,7 @@ class MessagingService extends BaseApiService {
 
   async updateOnlineStatus(isOnline: boolean): Promise<void> {
     try {
-      await apiClient.post("/users/status", { isOnline });
+      await this.post("/users/status", { isOnline });
     } catch (error) {
       console.error("Failed to update online status:", error);
     }
@@ -251,7 +251,7 @@ class MessagingService extends BaseApiService {
 
   async getUserStatus(userId: number): Promise<OnlineStatus> {
     try {
-      const response = await apiClient.get(`/users/${userId}/status`);
+      const response = await this.get(`/users/${userId}/status`);
       return response.data;
     } catch (error) {
       console.error("Failed to get user status:", error);
@@ -264,7 +264,7 @@ class MessagingService extends BaseApiService {
     timeframe: "week" | "month" | "year" = "month",
   ): Promise<MessageAnalytics> {
     try {
-      const response = await apiClient.get(
+      const response = await this.get(
         `/messages/analytics?timeframe=${timeframe}`,
       );
       return response.data;
@@ -277,7 +277,7 @@ class MessagingService extends BaseApiService {
 
   async reportMessage(messageId: number, reason: string): Promise<void> {
     try {
-      await apiClient.post(`/messages/${messageId}/report`, { reason });
+      await this.post(`/messages/${messageId}/report`, { reason });
     } catch (error) {
       console.error("Failed to report message:", error);
       throw error;
@@ -286,7 +286,7 @@ class MessagingService extends BaseApiService {
 
   async getUnreadCount(): Promise<number> {
     try {
-      const response = await apiClient.get("/messages/unread-count");
+      const response = await this.get("/messages/unread-count");
       return response.data.count;
     } catch (error) {
       console.error("Failed to get unread count:", error);
@@ -297,7 +297,7 @@ class MessagingService extends BaseApiService {
   // Real-time Features
   async startTyping(conversationId: number): Promise<void> {
     try {
-      await apiClient.post(`/conversations/${conversationId}/typing/start`);
+      await this.post(`/conversations/${conversationId}/typing/start`);
     } catch (error) {
       console.error("Failed to start typing indicator:", error);
     }
@@ -305,7 +305,7 @@ class MessagingService extends BaseApiService {
 
   async stopTyping(conversationId: number): Promise<void> {
     try {
-      await apiClient.post(`/conversations/${conversationId}/typing/stop`);
+      await this.post(`/conversations/${conversationId}/typing/stop`);
     } catch (error) {
       console.error("Failed to stop typing indicator:", error);
     }
