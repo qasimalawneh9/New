@@ -63,11 +63,13 @@ export const AppProviders = ({ children }: AppProvidersProps) => (
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <AuthProvider>
-          <TooltipProvider delayDuration={300}>
-            {children}
-            <Toaster />
-            <Sonner />
-          </TooltipProvider>
+          <WebSocketProvider>
+            <TooltipProvider delayDuration={300}>
+              {children}
+              <Toaster />
+              <Sonner />
+            </TooltipProvider>
+          </WebSocketProvider>
         </AuthProvider>
       </LanguageProvider>
     </QueryClientProvider>
