@@ -1,6 +1,6 @@
 // Import critical pages directly (no lazy loading)
 import Index from "../pages/Index";
-import Login from "../pages/Login";
+import LoginFixed from "../pages/LoginFixed";
 import Signup from "../pages/Signup";
 import Dashboard from "../pages/Dashboard";
 import TeachersAdvanced from "../pages/TeachersAdvanced";
