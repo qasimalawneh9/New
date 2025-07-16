@@ -389,7 +389,7 @@ export function AdvancedSearchBackend({
                       <SelectValue placeholder="Any country" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Any country</SelectItem>
+                      <SelectItem value="all">Any country</SelectItem>
                       {countries.map((country) => (
                         <SelectItem key={country} value={country}>
                           {country}
@@ -480,7 +480,7 @@ export function AdvancedSearchBackend({
                     <SelectValue placeholder="Any experience level" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Any experience level</SelectItem>
+                    <SelectItem value="all">Any experience level</SelectItem>
                     <SelectItem value="new">New Teacher (0-1 years)</SelectItem>
                     <SelectItem value="experienced">
                       Experienced (2-5 years)
@@ -506,7 +506,7 @@ export function AdvancedSearchBackend({
                     <SelectValue placeholder="Any response time" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Any response time</SelectItem>
+                    <SelectItem value="all">Any response time</SelectItem>
                     <SelectItem value="within_1_hour">Within 1 hour</SelectItem>
                     <SelectItem value="within_2_hours">
                       Within 2 hours
