@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "@/lib/database";
+import { adminDashboardService } from "@/api/services/admin-dashboard.service";
 
 export default function AdminSimpleFixed() {
   const [stats, setStats] = useState<any>(null);
