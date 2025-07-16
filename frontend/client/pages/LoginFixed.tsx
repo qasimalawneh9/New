@@ -95,7 +95,9 @@ export default function LoginFixed() {
         }
 
         const returnTo = location.state?.returnTo || redirectUrl;
-        navigate(returnTo);
+
+        // Force reload the page to ensure proper navigation
+        window.location.href = returnTo;
       } else {
         setError("Invalid email or password");
       }
