@@ -52,6 +52,7 @@ export const routes: RouteConfig[] = [
   { path: "/login", component: LoginFixed },
   { path: "/signup", component: Signup },
   { path: "/messages", component: Messages },
+  { path: "/messaging", component: MessagingSystem },
   { path: "/lesson/:id", component: LessonRoom },
   { path: "/booking/:id", component: BookingConfirmation },
   { path: "/how-it-works", component: HowItWorks },
